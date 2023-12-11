@@ -73,7 +73,14 @@ class MyApp extends StatelessWidget {
         ),
         body: ListView.builder(
           itemCount: 10,
-          itemBuilder: (context, index) {},
+          itemBuilder: (context, index) {
+            return Card(
+              child: Image.network(
+                'https://images.unsplash.com/photo-1643888193686-81c45c445b95?q=80&w=2400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                height: MediaQuery.of(context).size.height * 0.5,
+              ),
+            );
+          },
         ),
       ),
     );
