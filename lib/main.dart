@@ -1,6 +1,5 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: FlexThemeData.light(
         scheme: FlexScheme.material,
         surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
@@ -54,8 +54,39 @@ class MyApp extends StatelessWidget {
             padding: EdgeInsetsDirectional.only(start: 16, top: 16),
             child: CircleAvatar(),
           ),
-          actions: [Icon(Icons.more)],
+          actions: [
+            AppBarAction(
+              onTap: () {},
+              image: 'assets/icons/bell.png',
+            ),
+            AppBarAction(
+              onTap: () {},
+              image: 'assets/icons/hug.png',
+            ),
+            AppBarAction(
+              onTap: () {},
+              image: 'assets/icons/more.png',
+            ),
+          ],
         ),
+      ),
+    );
+  }
+}
+
+class AppBarAction extends StatelessWidget {
+  const AppBarAction({super.key, required this.onTap, required this.image});
+
+  final Function() onTap;
+  final String image;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsetsDirectional.only(end: 8, top: 16),
+        child: Center(child: Image.asset(image)),
       ),
     );
   }
