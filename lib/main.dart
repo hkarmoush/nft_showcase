@@ -52,7 +52,9 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.transparent,
           leading: const Padding(
             padding: EdgeInsetsDirectional.only(start: 16, top: 16),
-            child: CircleAvatar(),
+            child: CircleAvatar(
+              backgroundImage: AssetImage('assets/icons/person.png'),
+            ),
           ),
           actions: [
             AppBarAction(
@@ -68,6 +70,10 @@ class MyApp extends StatelessWidget {
               image: 'assets/icons/more.png',
             ),
           ],
+        ),
+        body: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (context, index) {},
         ),
       ),
     );
