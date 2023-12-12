@@ -72,13 +72,41 @@ class MyApp extends StatelessWidget {
           ],
         ),
         body: ListView.builder(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           itemCount: 10,
           itemBuilder: (context, index) {
-            return Card(
-              child: Image.network(
-                'https://images.unsplash.com/photo-1643888193686-81c45c445b95?q=80&w=2400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                height: MediaQuery.of(context).size.height * 0.5,
-              ),
+            return Column(
+              children: [
+                InkWell(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const NFTDetails()),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(22),
+                    child: Hero(
+                      tag: const Key(
+                        'https://images.unsplash.com/photo-1643888193686-81c45c445b95?q=80&w=2400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                      ),
+                      child: Image.network(
+                        'https://images.unsplash.com/photo-1643888193686-81c45c445b95?q=80&w=2400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                        height: MediaQuery.of(context).size.height * 0.5,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 128,
+                  child: const Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 64,
+                        backgroundColor: Color(0xFF79F99D),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             );
           },
         ),
@@ -100,6 +128,29 @@ class AppBarAction extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsetsDirectional.only(end: 8, top: 16),
         child: Center(child: Image.asset(image)),
+      ),
+    );
+  }
+}
+
+class NFTDetails extends StatelessWidget {
+  const NFTDetails({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(22),
+          child: Hero(
+            tag: const Key(
+                'https://images.unsplash.com/photo-1643888193686-81c45c445b95?q=80&w=2400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+            child: Image.network(
+              'https://images.unsplash.com/photo-1643888193686-81c45c445b95?q=80&w=2400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+              height: MediaQuery.of(context).size.height * 0.5,
+            ),
+          ),
+        ),
       ),
     );
   }
